@@ -1,3 +1,8 @@
-var unzip = require('file/file-unzip.js')
+var unzip = require('./file/file-unzip.js')
 
-unzip.unzipTabDelimited();
+//unzip.unzip('../../data/US.zip', '../../data/US');
+
+unzip.decompress('../../data/US.zip', '../../data/US',function(err, files){
+			console.log(err);
+			console.log(files ? files.length : "no files");
+		});

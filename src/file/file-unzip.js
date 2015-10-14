@@ -1,45 +1,66 @@
 // 3rd party libraries
-var unzip = require("unzip2");
+var unzip2 = require("unzip2");
 var fs = require("fs");
 var path = require("path");
 
-// latlong library
-var unzipTab = function(zipfile, unzipLocation){
-	console.log("unzipTab called");
+var DecompressLibrary = require('decompress');
+
+var decompressAsync = function (zipfile, unzipLocation, callback){
+
+	var archive = path.join(__dirname, zipfile);
+	var final = path.join(__dirname, unzipLocation);
+	
+	console.log(archive);
+	console.log(final);
+	
+	/*
+	var tempDecompress = new DecompressLibrary({mode: '755'})
+		.src(archive)
+		.dest(final)
+		.use(DecompressLibrary.zip({strip: 1}))
+		.run(function(err,files){
+			console.log(files.length);
+		});
+	*/
+	
+	var decompress = new DecompressLibrary()
+		.src(archive)
+		.dest(final)
+		.use(DecompressLibrary.zip());
+
+	decompress.run(function (err, files) {
+		console.log(err);
+		
+		callback(err, files);
+	});
+	
+	
+} 
+ 
+
+
+// unzipTab 
+// zipfile - path and file to zip file
+// unzipLocation - path to unzip diretory
+var unzip = function(zipfile, unzipLocation){
 	
 	var archive = path.join(__dirname, zipfile);
 	var final = path.join(__dirname, unzipLocation);
 	
 	fs.exists(archive, function(exists){
-		
-		console.log("exists:" + exists);
-		
 		if (exists===true){
-		
-			console.log("zipped file exists");
-	
-			var unzipExtractor = unzip.Extract({ path: final });
-			unzipExtractor.on('error', function (err) {
-				throw err;
-			});
-			unzipExtractor.on('close', function(){
-				console.log("close");
-			});
-
-			fs.createReadStream(archive).pipe(unzipExtractor);
-	
-			
-			fs.exists(unzipLocation, function(){
-				console.log("unzipped file exists");
-			});
+			console.log("unzip.unzip::zip file found");	
+			fs.createReadStream(archive).pipe(unzip2.Extract({ path: final }));
 		}
-		
+		else{
+			console.log("unzip.unzip::zip file not found");	
+		}
 	});
-	
 }
 
 
 module.exports = {
-	unzipTab : unzipTab
+	unzip : unzip,
+	decompress: decompressAsync
 }
 
