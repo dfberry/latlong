@@ -1,0 +1,22 @@
+{
+  "name": "latlong",
+  "version": "1.0.0",
+  "description": "latlong database",
+  "main": "latlong.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "latlong",
+    "zipcode",
+    "postalcode"
+  ],
+  "author": "@DFBerry",
+  "license": "ISC",
+  "devDependencies": {
+    "unzip": "^0.1.11"
+  },
+  "dependencies": {
+    "unzip2": "^0.2.5"
+  }
+}
