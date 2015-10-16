@@ -1,3 +1,7 @@
+Oct 15, 2015
+Finally got async mocha test to work
+http://stackoverflow.com/questions/33159579/mocha-test-to-decompress-file-fails-to-create-file-but-same-code-from-node-works
+
 Oct 14, 2015
 Test framework is mocha
 Assert library is chai

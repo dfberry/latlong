@@ -1,22 +1,37 @@
-// 3rd party libraries
-//var expect = require('chai').expect;
-//var fs = require("fs");
+var assert = require("chai").assert;
+var unzip = require("../../src/file/file-unzip.js")
 
-console.log("test file");
-
-// library to test
-var unzip = require('../../src/file/file-unzip.js')
-
-// local variables for test
 var zippedFile = '../../data/US.zip';
-var unzippedDirectory = '../../data/US';
+var unzippedDirectory = '../../data/test/US';
 
-describe("Unzip Test", function(){
+describe("Decompress Test", function(){
 
-	it("Unzip ", function () {
+	it("Decompress via callback", function (done) {
 
-		unzip.decompress('../../data/US.zip', '../../data/US');
+		// call back style
+		unzip.unzip(zippedFile, unzippedDirectory + '2', function (err, files) {
+			//console.log(err);
+			console.log(files[0]);
+			
+			assert.equal(err,null);
+			assert.equal(files.length,2);
+			
+			done();
+		});
+		
 	});
+	it("Decompress via promise", function (done) {
 
+		// promise style
+		unzip.unzip(zippedFile, unzippedDirectory + '3')
+		.then(function (files) {
+			console.log(files[0]);
+			assert.equal(files.length,2);
+			done();
+		})
+		.fail(function(error){
+			console.log(error);
+		});
+	});	
 	
-});
+});	
