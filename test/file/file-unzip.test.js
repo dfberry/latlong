@@ -1,37 +1,45 @@
+// 3rd party libraries
 var assert = require("chai").assert;
-var unzip = require("../../src/file/file-unzip.js")
+var fs = require('fs');
+var path = require("path");
 
+// custom libraries
+var unzip = require("../../src/file/file-unzip.js");
+var fileMgmt = require("../../src/file/file-mgmt.js");
+
+// globals
 var zippedFile = '../../data/US.zip';
 var unzippedDirectory = '../../data/test/US';
+var unzippedDirectoryPost = '-unziptest';
 
 describe("Decompress Test", function(){
 
-	it("Decompress via callback", function (done) {
+	afterEach(function(done) {
+		var final = path.join(__dirname, unzippedDirectory);
+		
+		fileMgmt.deleteFolderRecursiveSync(final + unzippedDirectoryPost);
+		done();
+	});
 
-		// call back style
-		unzip.unzip(zippedFile, unzippedDirectory + '2', function (err, files) {
-			//console.log(err);
-			console.log(files[0]);
-			
-			assert.equal(err,null);
-			assert.equal(files.length,2);
-			
+	it("Decompress via callback", function (done) {
+		unzip.unzip(zippedFile, unzippedDirectory + unzippedDirectoryPost, function (err, files) {
+			if (!err){
+				
+				assert.equal(err,null);
+				assert.equal(files.length,2);
+			}
 			done();
 		});
-		
 	});
+	
 	it("Decompress via promise", function (done) {
-
-		// promise style
-		unzip.unzip(zippedFile, unzippedDirectory + '3')
+		unzip.unzip(zippedFile, unzippedDirectory + unzippedDirectoryPost)
 		.then(function (files) {
-			console.log(files[0]);
 			assert.equal(files.length,2);
-			done();
 		})
 		.fail(function(error){
-			console.log(error);
+
 		});
+		done();
 	});	
-	
 });	

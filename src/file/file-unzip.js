@@ -3,6 +3,7 @@ var Q = require("q");
 var fs = require("fs");
 var path = require("path");
 
+// custom libraries
 var DecompressLibrary = require('decompress');
 
 var mydecompress = function (zipfile, unzipLocation, callback){
@@ -21,6 +22,7 @@ var mydecompress = function (zipfile, unzipLocation, callback){
 				.dest(final)
 				.use(DecompressLibrary.zip())
 				.run(function(err,files){
+					
 					deferred.resolve(files)
 				});
 			

@@ -24,7 +24,11 @@
     "unzip": "^0.1.11"
   },
   "dependencies": {
+    "array-json-transform": "0.0.8",
+    "enum": "^2.2.0",
+    "node-require-tsv": "^1.0.1",
     "q": "^1.4.1",
+    "stat-mode": "^0.2.1",
     "unzip2": "^0.2.5"
   }
 }
