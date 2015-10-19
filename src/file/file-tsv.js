@@ -5,10 +5,6 @@ var Q = require("q");
 var fs = require("fs");
 var path = require("path");
 
-//aj.array2json(responseOverHTTP);
-
-// 3rd party libraries
-
 var myTsvToArray = function(tsvfile, callback){
 
 	var deferred = Q.defer();
