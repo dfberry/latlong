@@ -16,7 +16,7 @@ var myTsvToArray = function(tsvfile, callback){
 			
 			var arrayOfTsvStrings = require(tsvFileWithPath); 
 			
-			deferred.resolve(arrayOfTsvStrings)
+			deferred.resolve(arrayOfTsvStrings);
 			
 			deferred.promise.nodeify(callback);
 		} else {
