@@ -23,7 +23,7 @@ var mydecompress = function (zipfile, unzipLocation, callback){
 				.use(DecompressLibrary.zip())
 				.run(function(err,files){
 					
-					deferred.resolve(files)
+					deferred.resolve(files);
 				});
 			
 			
