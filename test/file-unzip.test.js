@@ -4,12 +4,12 @@ var fs = require('fs');
 var path = require("path");
 
 // custom libraries
-var unzip = require("../../src/file/file-unzip.js");
-var fileMgmt = require("../../src/file/file-mgmt.js");
+var unzip = require("../src/file/file-unzip.js");
+var fileMgmt = require("../src/file/file-mgmt.js");
 
 // globals
-var zippedFile = '../../data/US.zip';
-var unzippedDirectory = '../../data/test/US';
+var zippedFile = '../data/US.zip';
+var unzippedDirectory = '../data/test/US';
 var unzippedDirectoryPost = '-unziptest';
 
 describe("Decompress Test", function(){
@@ -22,14 +22,16 @@ describe("Decompress Test", function(){
 	});
 
 	it("Decompress via callback", function (done) {
+		this.timeout(5000);
 		unzip.unzip(zippedFile, unzippedDirectory + unzippedDirectoryPost, function (err, files) {
 			if (!err){
 				
 				assert.equal(err,null);
 				assert.equal(files.length,2);
 			}
-			done();
+			
 		});
+		done();
 	});
 	
 	it("Decompress via promise", function (done) {

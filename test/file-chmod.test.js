@@ -5,10 +5,10 @@ var path = require("path");
 var Mode = require('stat-mode');
 
 // custom libraries
-var chmodConverter = require("../../src/file/file-chmod.js")
+var chmodConverter = require("../src/file/file-chmod.js")
 
 // globals
-var file = '../../data/test/chmod/US.txt';
+var file = '../data/test/chmod/US.txt';
 
 describe("File CHMOD Test", function(){
 

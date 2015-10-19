@@ -4,10 +4,10 @@ var fs = require("fs");
 var assert = require("chai").assert;
 
 // custom directires
-var fileMgmt = require("../../src/file/file-mgmt.js");
+var fileMgmt = require("../src/file/file-mgmt.js");
 
 // globals
-var file = "../../data/test/deleteFolderRecursive";
+var file = "../data/test/deleteFolderRecursive";
 var final = path.join(__dirname, file);
 
 describe("Folder Mgmt Test", function(){

@@ -1,21 +1,15 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-	  jasmine_node: {
-		  options: {
-			  showColors: true,
-			  forceExit: true,
-			  match: '.',
-			  matchall: false,
-			  extensions: 'js'
-			  
-		  },
-		  all: ['spec/']
-	  }   
+    mocha: {
+      test: {
+        src: ['test/file/'],
+      }
+    }
   });
 
-  grunt.loadNpmTasks('grunt-jasmine-node');
-
-  grunt.registerTask('test', ['jasmine_node']);
+  grunt.loadNpmTasks('grunt-mocha');
+  
+  grunt.registerTask('default', ['mocha'])
 
 };
