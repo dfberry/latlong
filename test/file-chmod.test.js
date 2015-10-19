@@ -43,6 +43,7 @@ describe("File CHMOD Test", function(){
 
 				if (err) throw err;
 				
+				
 				var mode = new Mode(stat);
 				assert.equal(mode.toString(),"-r--r--r--");
 				

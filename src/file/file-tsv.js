@@ -5,18 +5,17 @@ var Q = require("q");
 var fs = require("fs");
 var path = require("path");
 
-var myTsvToArray = function(tsvfile, callback){
-
-	var deferred = Q.defer();
-	var tsvFileWithPath = path.join(__dirname, tsvfile);
+var myTsvToJson = function(tsvFile, callback){
 	
-	fs.exists(tsvFileWithPath, function(exists){
+	var deferred = Q.defer();
+	
+	fs.exists(tsvFile, function(exists){
 		
 		if(exists==true){
 			
-			var arrayOfTsvStrings = require(tsvFileWithPath); 
+			var arrayOfTsvStrings = require(tsvFile); 
 			
-			deferred.resolve(arrayOfTsvStrings);
+			deferred.resolve(JSON.stringify(arrayOfTsvStrings));
 			
 			deferred.promise.nodeify(callback);
 		} else {
@@ -25,6 +24,7 @@ var myTsvToArray = function(tsvfile, callback){
 	});
 	return deferred.promise;
 } 
+
 module.exports = {
-	tsvToArray: myTsvToArray
+	tsvToJson: myTsvToJson
 }

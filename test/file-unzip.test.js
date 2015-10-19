@@ -23,7 +23,11 @@ describe("Decompress Test", function(){
 
 	it("Decompress via callback", function (done) {
 		this.timeout(5000);
-		unzip.unzip(zippedFile, unzippedDirectory + unzippedDirectoryPost, function (err, files) {
+		
+		var archive = path.join(__dirname, zippedFile);
+		var final = path.join(__dirname, unzippedDirectory);		
+		
+		unzip.unzip(archive, final + unzippedDirectoryPost, function (err, files) {
 			if (!err){
 				
 				assert.equal(err,null);
@@ -35,7 +39,12 @@ describe("Decompress Test", function(){
 	});
 	
 	it("Decompress via promise", function (done) {
-		unzip.unzip(zippedFile, unzippedDirectory + unzippedDirectoryPost)
+		this.timeout(5000);
+
+		var archive = path.join(__dirname, zippedFile);
+		var final = path.join(__dirname, unzippedDirectory);		
+
+		unzip.unzip(archive, final  + unzippedDirectoryPost)
 		.then(function (files) {
 			assert.equal(files.length,2);
 		})

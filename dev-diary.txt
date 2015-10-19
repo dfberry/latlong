@@ -1,3 +1,8 @@
+Oct 19, 2015
+Most modules are async and return callback or promises.
+Mocha tests run from package.json and all pass.
+Currently tsv is converted into array. Need to convert array into json to add to mongo. 
+
 Oct 15, 2015
 Finally got async mocha test to work
 http://stackoverflow.com/questions/33159579/mocha-test-to-decompress-file-fails-to-create-file-but-same-code-from-node-works
