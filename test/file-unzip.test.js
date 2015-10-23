@@ -1,6 +1,7 @@
+/* jshint node: true */
+
 // 3rd party libraries
 var assert = require("chai").assert;
-var fs = require('fs');
 var path = require("path");
 
 // custom libraries
@@ -47,10 +48,8 @@ describe("Decompress Test", function(){
 		unzip.unzip(archive, final  + unzippedDirectoryPost)
 		.then(function (files) {
 			assert.equal(files.length,2);
-		})
-		.fail(function(error){
-
 		});
+
 		done();
 	});	
 });	

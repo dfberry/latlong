@@ -1,3 +1,5 @@
+/* jshint node: true */
+
 // 3rd party libraries
 var assert = require("chai").assert;
 var fs = require("fs");
@@ -5,7 +7,7 @@ var path = require("path");
 var Mode = require('stat-mode');
 
 // custom libraries
-var chmodConverter = require("../src/file/file-chmod.js")
+var chmodConverter = require("../src/file/file-chmod.js");
 
 // globals
 var file = '../data/test/chmod/US.txt';
@@ -33,7 +35,7 @@ describe("File CHMOD Test", function(){
 	it("change to all readable via callback", function (done) {
 
 		// act	
-		chmodConverter.makeReadable(file, function (err, returned) {
+		chmodConverter.makeReadable(file, function () {
 
 			// assert
 			var Mode = require('stat-mode');
@@ -56,7 +58,7 @@ describe("File CHMOD Test", function(){
 	it("change to all readable  via promise", function (done) {
 
 		chmodConverter.makeReadable(file)
-		.then(function (returned) {
+		.then(function () {
 			var Mode = require('stat-mode');
 			var fileWithPath = path.join(__dirname, file);
 			
@@ -69,9 +71,7 @@ describe("File CHMOD Test", function(){
 				
 			});			
 			done();
-		})
-		.fail(function(error){
-			done();
 		});
+
 	});	
 });	

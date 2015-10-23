@@ -1,3 +1,5 @@
+/* jshint node: true */
+
 // 3rd party libraries
 var path = require("path");
 var fs = require("fs");

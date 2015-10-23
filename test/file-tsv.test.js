@@ -1,3 +1,5 @@
+/* jshint node: true */
+
 // 3rd party libraries
 var assert = require("chai").assert;
 
@@ -21,15 +23,12 @@ describe("Tab-seperated file Conversion Test", function(){
 		done();
 	});
 	it("Converts to Array via promise", function (done) {
-		var final = path.join(__dirname, tsvFile);
-		tsvConverter.tsvToJson(final)
+		tsvConverter.tsvToJson(tsvFile)
 		.then(function (tsvJson) {
 			assert.equal(tsvJson.length,43633);
 			done();
-		})
-		.fail(function(error){
-			done();
 		});
+
 	});	
 	
 });	

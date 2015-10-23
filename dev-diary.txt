@@ -1,3 +1,13 @@
+Oct 23, 2015
+Init - pulls data down, parses into format, sticks into db
+Search - searches data and returns json
+config file: countries, db details
+
+http://www.sitepoint.com/promises-in-javascript-unit-tests-the-definitive-guide/
+
+Oct 20, 2015
+Plunker
+
 Oct 19, 2015
 Most modules are async and return callback or promises.
 Mocha tests run from package.json and all pass.
