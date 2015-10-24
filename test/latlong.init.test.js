@@ -22,8 +22,6 @@ var testSuccessConfigFiles = [
 var latlong = require("../latlong.js");
 
 function _testFailures(configFile){
-
-
 	describe("Latlong Init", function(){
 	
 		it(".Load empty configfile via callback " + configFile, function (done) {
@@ -57,10 +55,50 @@ function _testFailures(configFile){
 			});
 		});
 	});
+};
+
+function _testSuccesses(configFile){
+
+
+	describe("Latlong Init", function(){
+	
+		it(".Load successful configfile via callback " + configFile, function (done) {
+			this.timeout(5000);
+			
+			latlong.Init.Load(configFile, function (error, results) {
+
+				if (results){
+					assert.equal(true, results);
+					done();
+				} else {
+					assert.fail(); 
+					done();
+				}
+			});
+		});
+		it(".Load successful configfile via promise " + configFile, function (done) {
+			this.timeout(5000);
+			
+			latlong.Init.Load(configFile)
+			.then(function (results) {
+				assert.equal(true, results);
+				done();
+			})
+			.fail(function(error){	
+				assert.fail(); 
+				done();
+			});
+		});
+	});
 }
 
 
-//loop through expected failures
+//loop through expected failure
+
 _und.each(testFailConfigFiles, function(item) {
   _testFailures(item);
+});
+
+_und.each(testSuccessConfigFiles, function(item) {
+  _testSuccesses(item);
 });
