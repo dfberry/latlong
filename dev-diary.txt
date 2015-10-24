@@ -1,3 +1,7 @@
+Oct 24, 2015
+http://joelhooks.com/blog/2014/02/06/stop-writing-for-loops-start-using-underscorejs/
+http://dailyjs.com/2014/01/30/exception-error/
+
 Oct 23, 2015
 Init - pulls data down, parses into format, sticks into db
 Search - searches data and returns json
@@ -20,3 +24,6 @@ http://stackoverflow.com/questions/33159579/mocha-test-to-decompress-file-fails-
 Oct 14, 2015
 Test framework is mocha
 Assert library is chai
+
+Oct 1, 2015
+http://download.geonames.org/export/zip/

@@ -29,7 +29,8 @@
     "mongodb": "^2.0.46",
     "node-require-tsv": "^1.0.1",
     "q": "^1.4.1",
-    "stat-mode": "^0.2.1"
+    "stat-mode": "^0.2.1",
+    "underscore": "^1.8.3"
   },
   "jshintConfig": {
     "undef": true,
