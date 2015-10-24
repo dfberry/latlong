@@ -1,5 +1,5 @@
 {
 	"dataurl": "http://download.geonames.org/export/zip/",
-	"country" : ["US.zip"],
+	"country" : ["US.zip", "CA.zip"],
 	"datadirectory": "data/manualtests/"
 }
