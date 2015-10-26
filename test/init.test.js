@@ -19,9 +19,9 @@ describe("Main library entry point", function(){
 			console.log(results);
 			assert.equal(err,null);
 			assert.equal(results.length,null);
-			
+			done();
 		});
-		done();
+		
 	});
 	it("via promise", function (done) {
 		testInitLibrary.Init(tsvFile)
