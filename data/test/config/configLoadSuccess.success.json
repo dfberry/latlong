@@ -1,5 +1,12 @@
 {
 	"dataurl": "http://download.geonames.org/export/zip/",
-	"country" : ["US.zip", "CA.zip"],
-	"datadirectory": "data/manualtests/"
+	"country" : ["US.zip", "CA.zip", "123.abc"],
+	"datadirectory": "data/manualtests/",
+	"mongodb" : {
+		"url": "mongodb://ds042688.mongolab.com:42688/dfberry-geo",
+		"collection": "geoZip",
+		"user": "admin-user",
+		"pwd": "admin-123",
+		"deleteCollectionIfExists": "true"
+		}
 }

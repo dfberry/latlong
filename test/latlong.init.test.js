@@ -9,6 +9,7 @@ var customError = require('../lib/error.js');
 var testFailConfigFiles = [
 	'../data/test/config/configLoadEmpty.fail.json',
 	'../data/test/config/configLoadNoCountry.fail.json',
+	'../data/test/config/configLoadEmptyCountry.fail.json',	
 	'../data/test/config/configLoadNoDataUrl.fail.json',
 	'../data/test/config/configLoadEmpty.fail.json'
 	
