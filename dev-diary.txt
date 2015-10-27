@@ -1,3 +1,8 @@
+Oct 27, 2015
+Promises - https://blog.jcoglan.com/2013/03/30/callbacks-are-imperative-promises-are-functional-nodes-biggest-missed-opportunity/
+http://alexperry.io/node/2015/03/25/promises-in-node.html
+http://bluebirdjs.com/docs/features.html
+
 Oct 24, 2015
 http://joelhooks.com/blog/2014/02/06/stop-writing-for-loops-start-using-underscorejs/
 http://dailyjs.com/2014/01/30/exception-error/
