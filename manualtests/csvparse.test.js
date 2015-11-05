@@ -21,9 +21,11 @@ var dataFile = path.join(__dirname,'/../data/test/tsv/US.txt');
 				"accuracy"  			
 			]
 	};
-
+			//console.log(parseOptions);
 var parser = parse(parseOptions, function(err, data){
   console.log(data);
+  //console.log("inside parser");
 });
-console.log(dataFile);
+//console.log(parser);
+//console.log(dataFile);
 fs.createReadStream(dataFile).pipe(parser);

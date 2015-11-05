@@ -13,13 +13,12 @@ var config = require('../data/test/config/configLoadSuccess.success.json');
 describe("Import tsv file Test", function(){
 
 	it("Returns correctly formatted array", function (done) {
-		this.timeout(5000);
+		//this.timeout(5000);
 		
 		
-		tsvConverter.Init.import(config,"US","",function(error, results){
-			console.log("bottom of tests");
-			//console.log(results);
-			console.log("error=" + error);
+		tsvConverter.Init.import(config,"US.zip","",function(error, results){
+			console.log(error ? "test error" : 'no test error');
+			console.log(results);
 		});
 		
 		done();
