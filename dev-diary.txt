@@ -1,7 +1,8 @@
 Nov 5, 2015
 Needed to pass UTF-8 in order for readfile to work correctly:
 var data = fs.readFileSync(countryDataFilePath,'utf8');//, function (err, data) {
-			
+
+figuring out streams - https://nodejs.org/api/stream.html#stream_class_stream_readable			
 
 Nov 2, 2015
 JSON.parse expects doublequoted keys and values - don't use single
