@@ -1,3 +1,6 @@
+Nov 6, 2015
+Convert to promises and streams
+
 Nov 5, 2015
 Needed to pass UTF-8 in order for readfile to work correctly:
 var data = fs.readFileSync(countryDataFilePath,'utf8');//, function (err, data) {
