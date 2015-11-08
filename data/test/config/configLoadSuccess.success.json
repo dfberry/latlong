@@ -1,13 +1,32 @@
 {
 	"dataurl": "http://download.geonames.org/export/zip/",
-	"country" : ["US.zip", "CA.zip", "123.abc"],
+	"country" : ["abc.zip", "US.zip", "CA.zip", "AG.zip", "RU.zip"],
 	"datadirectory": "data/manualtests/",
-	"unzipfile-chmod":"444;", 
+	"unzipfileCHMOD":"444", 
 	"mongodb" : {
-		"url": "mongodb://ds042688.mongolab.com:42688/dfberry-geo",
+		"url": "mongodb://user:pwd@ds042688.mongolab.com:42688/dfberry-geo",
+		"host" : "x",
+		"port" : "x",
+		"account" : "x",
 		"collection": "geoZip",
-		"user": "admin-user",
-		"pwd": "admin-123",
+		"user": "user",
+		"pwd": "pwd",
 		"deleteCollectionIfExists": "true"
+		},
+	"datacolumns" : {
+		"countries" : [
+			"countrycode",     
+			"postalcode",       
+			"placename",        
+			"adminname1",       
+			"admincode1",      
+			"adminname2" ,      
+			"admincode2",       
+			"adminname3" ,      
+			"admincode3" ,      
+			"latitude" ,         
+			"longitude" ,        
+			"accuracy"  			
+			]
 		}
-}
+	}
