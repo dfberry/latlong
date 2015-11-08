@@ -14,10 +14,25 @@ describe("DB Insert Test", function(){
 
 	it("Insert array of json objects", function (done) {		
 		
+		// give internet connection more time to get to mongo site
+		this.timeout(5000);
+		
 		var jsonArray = [{"country": "US", "zip" : "98225"},{"country": "US", "zip" : "98227"}]; 
 		
 		sut.insert(config.mongodb, jsonArray,function(err,results){
-			console.log("done");
+			console.log("error=" + err);
+			console.log(results);
+			
+			// results should return something like...
+			/*
+			{ result: { ok: 1, n: 2 },
+				ops: 
+				[ { country: 'US', zip: '98225', _id: 563f5911e1be512a074e7181 },
+					{ country: 'US', zip: '98227', _id: 563f5911e1be512a074e7182 } ],
+				insertedCount: 2,
+				insertedIds: [ 563f5911e1be512a074e7181, 563f5911e1be512a074e7182 ] }
+			*/
+			
 			done();
 		});
 	});
