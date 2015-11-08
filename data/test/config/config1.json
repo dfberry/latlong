@@ -1,6 +1,0 @@
-{
-"url": "mongodb://ds042688.mongolab.com:42688/dfberry-geo",
-"collection": "geoZip",
-"user": "admin-user",
-"pwd": "admin-123"
-}
