@@ -1,3 +1,6 @@
+Nov 9, 2015
+TODO: change callback(err) to callback(Error()))
+
 Nov 6, 2015
 Convert to promises and streams
 
