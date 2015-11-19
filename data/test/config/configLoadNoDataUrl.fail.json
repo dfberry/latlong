@@ -1,6 +1,8 @@
 {
-"url": "mongodb://ds042688.mongolab.com:42688/dfberry-geo",
-"collection": "geoZip",
-"user": "user",
-"pwd": "pwd"
+	"db" : {
+		"url": "mongodb://a.mongolab.com:id/acct",
+		"collection": "geoZip",
+		"user": "user",
+		"pwd": "pwd"
+		}
 }

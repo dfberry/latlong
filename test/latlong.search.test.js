@@ -5,7 +5,7 @@ var assert = require("chai").assert;
 //var path = require("path");
 
 // custom libraries
-var latlong = require("../latlong.js");
+var latlong = require("../latlong.waterfall.js");
 
 // globals
 var configFile = require('../data/test/config/configLoadSuccess.success.json');
@@ -13,7 +13,7 @@ var configFile = require('../data/test/config/configLoadSuccess.success.json');
 describe("Latlong Search", function(){
 
 	it(".ByTerm via callback", function (done) {
-		this.timeout(5000);
+		this.timeout(9000);
 		
 		var searchTerm	= 'FIELD5';
 		var searchValue = 'WA';
@@ -25,7 +25,7 @@ describe("Latlong Search", function(){
 		});
 	});
 	it(".ByTerm via promise", function (done) {
-		this.timeout(5000);
+		this.timeout(9000);
 		
 		var searchTerm	= 'FIELD5';
 		var searchValue = 'WA';
@@ -41,7 +41,7 @@ describe("Latlong Search", function(){
 		});
 	});
 	it(".Fields via callback", function (done) {
-		this.timeout(5000);
+		this.timeout(9000);
 		latlong.Search.Fields(configFile.mongodb, function (err, results) {
 			assert.equal(err,null);
 			assert.equal(results.length,1);
@@ -49,7 +49,7 @@ describe("Latlong Search", function(){
 		});
 	});
 	it(".Fields via promise", function (done) {
-		this.timeout(5000);
+		this.timeout(9000);
 		latlong.Search.Fields(configFile.mongodb)
 		.then(function (results) {
 			assert.equal(results.length,1);

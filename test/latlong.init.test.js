@@ -25,22 +25,28 @@ var latlong = require("../latlong.js");
 function _testFailures(configFile){
 	describe("Latlong Init", function(){
 	
-		it(".Load empty configfile via callback " + configFile, function (done) {
+		it("F1.Load empty configfile via callback " + configFile, function (done) {
 			this.timeout(5000);
 			
 			latlong.Init.Load(configFile, function (error, results) {
+				
+				//console.log(error);
+				//console.log(results);
+				
 				if (error){
+					console.log("error received");
 					assert(error.message);  
 					assert(error instanceof customError.BadConfig);  
 					assert(error instanceof Error);  
 					done();
 				} else {
+					console.log("no error received");
 					assert.fail();
 					done();
 				}
 			});
 		});
-		it(".Load empty configfile via promise " + configFile, function (done) {
+		it("F2.Load empty configfile via promise " + configFile, function (done) {
 			this.timeout(5000);
 			
 			latlong.Init.Load(configFile)
@@ -48,7 +54,8 @@ function _testFailures(configFile){
 				assert.fail();
 				done();
 			})
-			.fail(function(error){			
+			.fail(function(error){	
+				console.log("error received");		
 				assert(error.message);  
 				assert(error instanceof customError.BadConfig);  
 				assert(error instanceof Error);   
@@ -63,21 +70,22 @@ function _testSuccesses(configFile){
 
 	describe("Latlong Init", function(){
 	
-		it(".Load successful configfile via callback " + configFile, function (done) {
+		it("S1.Load successful configfile via callback " + configFile, function (done) {
 			this.timeout(5000);
 			
 			latlong.Init.Load(configFile, function (error, results) {
 
-				if (results){
-					assert.equal(true, results);
+				if (error){
+					console.log("error received");
+					assert.fail(); 
 					done();
 				} else {
-					assert.fail(); 
+					assert.equal(true, results);
 					done();
 				}
 			});
 		});
-		it(".Load successful configfile via promise " + configFile, function (done) {
+		it("S2.Load successful configfile via promise " + configFile, function (done) {
 			this.timeout(5000);
 			
 			latlong.Init.Load(configFile)
@@ -86,6 +94,7 @@ function _testSuccesses(configFile){
 				done();
 			})
 			.fail(function(error){	
+				console.log("error received");
 				assert.fail(); 
 				done();
 			});
