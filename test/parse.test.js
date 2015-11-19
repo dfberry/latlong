@@ -6,15 +6,15 @@ var assert = require("chai").assert;
 // custom libraries
 var sut = require("../lib/initwaterfall.js");
 
-var config = require('../data/test/config/configLoadSuccess.success.json');
-
-
 describe("Parse Test", function(){
 
-	it("Returns correctly formatted array", function (done) {		
-		this.timeout(5000);
+	it("Returns correctly formatted array of Json objects", function (done) {		
+		this.timeout(9000);
+
+		var config = require('../data/test/config/config.parse.test.1.json');
+
 		sut.parse(config,"US.zip","",function(error, results){
-			console.log(results);
+			assert(Array.isArray(results),'result is array'),
 			done();
 		});
 		
