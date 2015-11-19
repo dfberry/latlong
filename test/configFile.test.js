@@ -41,19 +41,22 @@ function _filesExist(configFile){
 	
 		it("success - file does exist: " + configFile, function (done) {
 			this.timeout(10000);
-			
-			suv.doesFileExist(configFile, function (error, results) {
+
+			assert.doesNotThrow(function() {
 				
-				//console.log(error);
-				//console.log(results);
-				
-				if (error==null){
-					assert.equal(results,true);
-					done();
-				} else {
-					done();
-				}
+				suv.doesFileExist(configFile, function (error, results) {
+								
+					if (error==null){
+						assert.equal(results,true);
+						done();
+					} 
+				}, function(err) {
+					if (err) throw err; // will fail the assert.doesNotThrow
+					done(); // call "done()" the parameter
+				});				
+
 			});
+			
 		});
 	});
 };
@@ -64,19 +67,24 @@ function _filesDontExist(configFile){
 		
 		it("failure - file does NOT exist: " + configFile, function (done) {
 			this.timeout(10000);
-			
-			suv.doesFileExist(configFile, function (error, results) {
-
 				
-				if (error==null){
-					done();
-				} else {
-					assert(error.message);  
-					assert(error instanceof customError.FileNotFound);  
-					assert(error instanceof Error); 
-					done();
-				}
+			assert.doesNotThrow(function() {
+				
+				suv.doesFileExist(configFile, function (error, results) {
+								
+					if (error==null){
+						
+						// expect no Error, but a false response
+						assert.equal(results,false);
+						done();
+					} 
+				}, function(err) {
+					if (err) throw err; // will fail the assert.doesNotThrow
+					done(); // call "done()" the parameter
+				});				
+
 			});
+			
 		});
 		
 	});
@@ -102,7 +110,7 @@ function _testFailures(configFile){
 					done();
 				} else {
 					console.log("no error received");
-					assert.fail();
+					
 					done();
 				}
 			});
@@ -114,7 +122,7 @@ function _testFailures(configFile){
 			
 			suv.configFileCheck(configFile)
 			.then(function (results) {
-				assert.fail();
+				
 				done();
 			})
 			.fail(function(error){	
