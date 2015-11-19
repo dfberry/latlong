@@ -4117,8 +4117,8 @@ US	95632	Galt	California	CA	Sacramento	067			38.2691	-121.3
 US	95638	Herald	California	CA	Sacramento	067			38.3119	-121.1729	
 US	95639	Hood	California	CA	Sacramento	067			38.3702	-121.5143	
 US	95641	Isleton	California	CA	Sacramento	067			38.157	-121.6066	
-US	95652	Mcclellan Afb	California	CA	Sacramento	067			38.6599	-121.3981	
 US	95652	Mcclellan	California	CA	Sacramento	067			38.6621	-121.3955	
+US	95652	Mcclellan Afb	California	CA	Sacramento	067			38.6599	-121.3981	
 US	95655	Mather	California	CA	Sacramento	067			38.5579	-121.291	
 US	95660	North Highlands	California	CA	Sacramento	067			38.6707	-121.3781	
 US	95662	Orangevale	California	CA	Sacramento	067			38.6845	-121.2256	5
@@ -4193,8 +4193,8 @@ US	91709	Chino Hills	California	CA	San Bernardino	071			33.9797	-117.7308
 US	91710	Chino	California	CA	San Bernardino	071			34.0125	-117.6844	
 US	91729	Rancho Cucamonga	California	CA	San Bernardino	071			34.84	-115.9671	
 US	91730	Rancho Cucamonga	California	CA	San Bernardino	071			34.107	-117.5941	
-US	91737	Alta Loma	California	CA	San Bernardino	071			34.1449	-117.5793	
 US	91737	Rancho Cucamonga	California	CA	San Bernardino	071			34.1467	-117.5803	
+US	91737	Alta Loma	California	CA	San Bernardino	071			34.1449	-117.5793	
 US	91739	Rancho Cucamonga	California	CA	San Bernardino	071			34.1705	-117.5182	
 US	91743	Guasti	California	CA	San Bernardino	071			34.84	-115.9671	
 US	91758	Ontario	California	CA	San Bernardino	071			34.84	-115.9671	
@@ -7203,8 +7203,8 @@ US	32332	Gretna	Florida	FL	Gadsden	039			30.6099	-84.6688
 US	32333	Havana	Florida	FL	Gadsden	039			30.6092	-84.4143	
 US	32343	Midway	Florida	FL	Gadsden	039			30.485	-84.4768	
 US	32351	Quincy	Florida	FL	Gadsden	039			30.5867	-84.6094	
-US	32352	Mount Pleasant	Florida	FL	Gadsden	039			30.6512	-84.5866	
 US	32352	Quincy	Florida	FL	Gadsden	039			30.6512	-84.5866	
+US	32352	Mount Pleasant	Florida	FL	Gadsden	039			30.6512	-84.5866	
 US	32353	Quincy	Florida	FL	Gadsden	039			30.5497	-84.6069	
 US	32619	Bell	Florida	FL	Gilchrist	041			29.7837	-82.8711	
 US	32693	Trenton	Florida	FL	Gilchrist	041			29.6746	-82.8117	
@@ -10700,8 +10700,8 @@ US	83709	Boise	Idaho	ID	Ada	001			43.5741	-116.2941
 US	83711	Boise	Idaho	ID	Ada	001			43.4599	-116.244	
 US	83712	Boise	Idaho	ID	Ada	001			43.6023	-116.1649	
 US	83713	Boise	Idaho	ID	Ada	001			43.634	-116.3419	
-US	83714	Garden City	Idaho	ID	Ada	001			43.7318	-116.2797	
 US	83714	Boise	Idaho	ID	Ada	001			43.7318	-116.2797	
+US	83714	Garden City	Idaho	ID	Ada	001			43.7318	-116.2797	
 US	83715	Boise	Idaho	ID	Ada	001			43.4599	-116.244	
 US	83716	Boise	Idaho	ID	Ada	001			43.5345	-115.9711	
 US	83717	Boise	Idaho	ID	Ada	001			43.4599	-116.244	
@@ -11235,7 +11235,7 @@ US	60141	Hines	Illinois	IL	Cook	031			41.8623	-87.8355
 US	60153	Maywood	Illinois	IL	Cook	031			41.8793	-87.8433	
 US	60154	Westchester	Illinois	IL	Cook	031			41.8524	-87.8845	
 US	60155	Broadview	Illinois	IL	Cook	031			41.8577	-87.8562	
-US	60159	Schaumburg	Illinois	IL	Cook	031			41.8119	-87.6873	
+US	60159	Schaumburg	Illinois	IL	Cook	031			42.0334	-88.0834	
 US	60160	Melrose Park	Illinois	IL	Cook	031			41.9003	-87.8581	
 US	60161	Melrose Park	Illinois	IL	Cook	031			41.8119	-87.6873	
 US	60162	Hillside	Illinois	IL	Cook	031			41.8725	-87.9016	
@@ -13283,8 +13283,8 @@ US	46951	Macy	Indiana	IN	Miami	103			40.9618	-86.1264
 US	46958	Mexico	Indiana	IN	Miami	103			40.8224	-86.1162	
 US	46959	Miami	Indiana	IN	Miami	103			40.6147	-86.1064	
 US	46970	Peru	Indiana	IN	Miami	103			40.7492	-86.068	
-US	46971	Grissom Arb	Indiana	IN	Miami	103			40.6683	-86.1378	
 US	46971	Grissom Afb	Indiana	IN	Miami	103			40.781	-86.0164	
+US	46971	Grissom Arb	Indiana	IN	Miami	103			40.6683	-86.1378	
 US	47401	Bloomington	Indiana	IN	Monroe	105			39.1401	-86.5083	
 US	47402	Bloomington	Indiana	IN	Monroe	105			39.1732	-86.5015	
 US	47403	Bloomington	Indiana	IN	Monroe	105			39.1263	-86.5769	
@@ -22264,8 +22264,8 @@ US	39208	Jackson	Mississippi	MS	Rankin	121			32.2604	-90.0897
 US	39218	Richland	Mississippi	MS	Rankin	121			32.2287	-90.1591	
 US	39218	Jackson	Mississippi	MS	Rankin	121			32.2287	-90.1591	
 US	39232	Flowood	Mississippi	MS	Rankin	121			32.3299	-90.0915	
-US	39288	Pearl	Mississippi	MS	Rankin	121			32.2338	-90.1235	
 US	39288	Jackson	Mississippi	MS	Rankin	121			32.3131	-89.7996	
+US	39288	Pearl	Mississippi	MS	Rankin	121			32.2338	-90.1235	
 US	39298	Jackson	Mississippi	MS	Rankin	121			32.3199	-89.9923	
 US	39074	Forest	Mississippi	MS	Scott	123			32.347	-89.4672	
 US	39080	Harperville	Mississippi	MS	Scott	123			32.4925	-89.4946	
@@ -36492,8 +36492,8 @@ US	75044	Garland	Texas	TX	Dallas	113			32.9522	-96.6654
 US	75045	Garland	Texas	TX	Dallas	113			32.9137	-96.6271	
 US	75046	Garland	Texas	TX	Dallas	113			32.7673	-96.7776	
 US	75047	Garland	Texas	TX	Dallas	113			32.7673	-96.7776	
-US	75048	Garland	Texas	TX	Dallas	113			32.9504	-96.5753	
 US	75048	Sachse	Texas	TX	Dallas	113			32.9643	-96.6012	
+US	75048	Garland	Texas	TX	Dallas	113			32.9504	-96.5753	
 US	75049	Garland	Texas	TX	Dallas	113			32.7673	-96.7776	
 US	75050	Grand Prairie	Texas	TX	Dallas	113			32.7649	-97.0112	
 US	75051	Grand Prairie	Texas	TX	Dallas	113			32.7115	-97.0069	
@@ -42010,8 +42010,8 @@ US	53227	Milwaukee	Wisconsin	WI	Milwaukee	079			42.9949	-88.0364
 US	53228	Milwaukee	Wisconsin	WI	Milwaukee	079			42.9676	-88.0434	
 US	53233	Milwaukee	Wisconsin	WI	Milwaukee	079			43.0407	-87.9357	
 US	53234	Milwaukee	Wisconsin	WI	Milwaukee	079			43.0174	-87.5697	
-US	53235	Milwaukee	Wisconsin	WI	Milwaukee	079			42.9731	-87.8687	
 US	53235	Saint Francis	Wisconsin	WI	Milwaukee	079			42.9731	-87.8687	
+US	53235	Milwaukee	Wisconsin	WI	Milwaukee	079			42.9731	-87.8687	
 US	53237	Milwaukee	Wisconsin	WI	Milwaukee	079			43.0174	-87.5697	
 US	53244	Milwaukee	Wisconsin	WI	Milwaukee County	079			42.9426	-87.9119	
 US	53259	Milwaukee	Wisconsin	WI	Milwaukee	079			43.0387	-87.9139	
