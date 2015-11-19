@@ -8,7 +8,7 @@ var assert = require("chai").assert;
 var latlong = require("../latlong.js");
 
 // globals
-var configFile = require('../data/test/config/config1.json');
+var configFile = require('../data/test/config/configLoadSuccess.success.json');
 
 describe("Latlong Search", function(){
 
@@ -18,7 +18,7 @@ describe("Latlong Search", function(){
 		var searchTerm	= 'FIELD5';
 		var searchValue = 'WA';
 		
-		latlong.Search.ByTerm(configFile, searchTerm, searchValue, function (err, results) {
+		latlong.Search.ByTerm(configFile.mongodb, searchTerm, searchValue, function (err, results) {
 			assert.equal(err,null);
 			assert.equal(results.length,747);
 			done();
@@ -30,7 +30,7 @@ describe("Latlong Search", function(){
 		var searchTerm	= 'FIELD5';
 		var searchValue = 'WA';
 
-		latlong.Search.ByTerm(configFile, searchTerm, searchValue)
+		latlong.Search.ByTerm(configFile.mongodb, searchTerm, searchValue)
 		.then(function (results) {
 			assert.equal(results.length,747);
 			done();
@@ -42,7 +42,7 @@ describe("Latlong Search", function(){
 	});
 	it(".Fields via callback", function (done) {
 		this.timeout(5000);
-		latlong.Search.Fields(configFile, function (err, results) {
+		latlong.Search.Fields(configFile.mongodb, function (err, results) {
 			assert.equal(err,null);
 			assert.equal(results.length,1);
 			done();
@@ -50,7 +50,7 @@ describe("Latlong Search", function(){
 	});
 	it(".Fields via promise", function (done) {
 		this.timeout(5000);
-		latlong.Search.Fields(configFile)
+		latlong.Search.Fields(configFile.mongodb)
 		.then(function (results) {
 			assert.equal(results.length,1);
 			done();
