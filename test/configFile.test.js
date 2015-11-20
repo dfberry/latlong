@@ -1,7 +1,10 @@
 /*jslint node: true */
 
 // 3rd party libraries
-var assert = require("chai").assert;
+var chai = require("chai");
+var assert = chai.assert;
+var expect= require("chai").expect;
+
 var _und = require('underscore');
 var customError = require('../lib/error.js');
 var path = require("path");
@@ -20,16 +23,15 @@ var filesDontExist =[
 
 var testFailConfigFiles = [
 	'notARealtest.json',
-	//'../data/test/config/configLoadEmpty.fail.json',
-	//'../data/test/config/configLoadNoCountry.fail.json',
-	//'../data/test/config/configLoadEmptyCountry.fail.json',	
-	//'../data/test/config/configLoadNoDataUrl.fail.json',
-	//'../data/test/config/configLoadEmpty.fail.json'
+	'../data/test/config/configLoadNoCountry.fail.json',
+	'../data/test/config/configLoadEmptyCountry.fail.json',	
+	'../data/test/config/configLoadNoDataUrl.fail.json',
+	'../data/test/config/configLoadEmpty.fail.json'
 	
 ];
 
 var testSuccessConfigFiles = [
-	//'../data/test/config/configLoadSuccess.success.json'
+	'../data/test/config/configLoadSuccess.success.json'
 ];
 
 // custom libraries
@@ -39,7 +41,7 @@ function _filesExist(configFile){
 	
 	describe("_fileExist", function(){
 	
-		it("success - file does exist: " + configFile, function (done) {
+		it("File: " + configFile, function (done) {
 			this.timeout(10000);
 
 			assert.doesNotThrow(function() {
@@ -65,13 +67,12 @@ function _filesDontExist(configFile){
 
 	describe("_filesDontExist", function(){		
 		
-		it("failure - file does NOT exist: " + configFile, function (done) {
+		it("File: " + configFile, function (done) {
 			this.timeout(10000);
 				
 			assert.doesNotThrow(function() {
 				
 				suv.doesFileExist(configFile, function (error, results) {
-								
 					if (error==null){
 						
 						// expect no Error, but a false response
@@ -82,94 +83,35 @@ function _filesDontExist(configFile){
 					if (err) throw err; // will fail the assert.doesNotThrow
 					done(); // call "done()" the parameter
 				});				
-
 			});
-			
 		});
-		
 	});
-
 };
 
 function _testFailures(configFile){
-	describe("Latlong Init", function(){
+	describe("configFileCheck failure", function(){
 	
-		it("F1.Load empty configfile via callback " + configFile, function (done) {
+		it("File: " + configFile, function (done) {
 			this.timeout(10000);
 			
 			suv.configFileCheck(configFile, function (error, results) {
-				
-				//console.log(error);
-				//console.log(results);
-				
-				if (error){
-					console.log("error received");
-					assert(error.message);  
-					assert(error instanceof customError.BadConfig);  
-					assert(error instanceof Error);  
-					done();
-				} else {
-					console.log("no error received");
-					
-					done();
-				}
-			});
-		});
-		
-		
-		it("F2.Load empty configfile via promise " + configFile, function (done) {
-			this.timeout(10000);
-			
-			suv.configFileCheck(configFile)
-			.then(function (results) {
-				
-				done();
-			})
-			.fail(function(error){	
-				console.log("error received");		
-				assert(error.message);  
-				assert(error instanceof customError.BadConfig);  
-				assert(error instanceof Error);   
+				expect(error).to.exist;
 				done();
 			});
 		});
-		
 	});
 };
 
 function _testSuccesses(configFile){
 
-
-	describe("Latlong Init", function(){
+	describe("configFileCheck success", function(){
 	
-		it("S1.Load successful configfile via callback " + configFile, function (done) {
+		it("File: " + configFile, function (done) {
 			this.timeout(10000);
-			
-			var fullPath = path.join()
 			
 			suv.configFileCheck(configFile, function (error, results) {
-
-				if (error){
-					console.log("error received");
-					assert.fail(); 
-					done();
-				} else {
-					assert.equal(true, results);
-					done();
-				}
-			});
-		});
-		it("S2.Load successful configfile via promise " + configFile, function (done) {
-			this.timeout(10000);
-			
-			suv.configFileCheck(configFile)
-			.then(function (results) {
-				assert.equal(true, results);
-				done();
-			})
-			.fail(function(error){	
-				console.log("error received");
-				assert.fail(); 
+				expect(results).to.exist;
+				expect(error).to.be.null;
 				done();
 			});
 		});
@@ -177,7 +119,8 @@ function _testSuccesses(configFile){
 }
 
 
-//loop through expected failure
+//loop through files
+
 _und.each(filesExist, function(item) {
 	var newPath = path.join(__dirname, item);	
   	_filesExist(newPath);
@@ -187,12 +130,13 @@ _und.each(filesDontExist, function(item) {
 	var newPath = path.join(__dirname, item);	
   	_filesDontExist(newPath);
 });
-/*
+
 _und.each(testFailConfigFiles, function(item) {
-  _testFailures(item);
+	var newPath = path.join(__dirname, item);
+  _testFailures(newPath);
 });
 
 _und.each(testSuccessConfigFiles, function(item) {
-  _testSuccesses(item);
+	var newPath = path.join(__dirname, item);	
+ 	_testSuccesses(newPath);
 });
-*/
