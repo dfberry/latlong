@@ -10,10 +10,15 @@ var latlong = require("../latlong.waterfall.js");
 // globals
 var configFile = require('../data/test/config/configLoadSuccess.success.json');
 
+/*
+
+DFB: adding more time as the mongo db seems to be a bit slow
+
+*/
 describe("Latlong Search", function(){
 
 	it(".ByTerm via callback", function (done) {
-		this.timeout(9000);
+		this.timeout(20000);
 		
 		var searchTerm	= 'FIELD5';
 		var searchValue = 'WA';
@@ -25,7 +30,7 @@ describe("Latlong Search", function(){
 		});
 	});
 	it(".ByTerm via promise", function (done) {
-		this.timeout(9000);
+		this.timeout(20000);
 		
 		var searchTerm	= 'FIELD5';
 		var searchValue = 'WA';
@@ -41,7 +46,7 @@ describe("Latlong Search", function(){
 		});
 	});
 	it(".Fields via callback", function (done) {
-		this.timeout(9000);
+		this.timeout(20000);
 		latlong.Search.Fields(configFile.mongodb, function (err, results) {
 			assert.equal(err,null);
 			assert.equal(results.length,1);
@@ -49,7 +54,7 @@ describe("Latlong Search", function(){
 		});
 	});
 	it(".Fields via promise", function (done) {
-		this.timeout(9000);
+		this.timeout(20000);
 		latlong.Search.Fields(configFile.mongodb)
 		.then(function (results) {
 			assert.equal(results.length,1);

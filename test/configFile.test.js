@@ -34,6 +34,13 @@ var testSuccessConfigFiles = [
 	'../data/test/config/configLoadSuccess.success.json'
 ];
 
+/*
+
+DFB: todo - have the it functions run through array instead of separate topside function
+so that test results display nicely
+
+*/
+
 // custom libraries
 var suv = require("../lib/initwaterfall.js");
 
