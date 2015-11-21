@@ -13,16 +13,9 @@ var config = {
 	"unzipfileCHMOD":"444", 
 };
 
-describe("Decompress Test", function(){
+describe("Decompress Tests", function(){
 
-	afterEach(function(done) {
-		var final = path.join(__dirname, config.datadirectory + "US/" );
-		console.log("after each=" + final);
-		fileMgmt.deleteFolderRecursiveSync(final);
-		done();
-	});
-
-	it("Decompress", function (done) {
+	it("Decompress unzip test", function (done) {
 		this.timeout(5000);
 		
 		//var archive = path.join(__dirname, zippedFile);
@@ -33,30 +26,15 @@ describe("Decompress Test", function(){
 				expect(err).to.be.null;
 				console.log(status);
 				
-				var final = path.join(__dirname, config.datadirectory + "US/" );
-				console.log("after each=" + final);
-				fileMgmt.deleteFolderRecursiveSync(final);				
+				// path is wrong 
+				// /Users/dfberry/repos/latlong/test/data/US/
+				//var final = path.join(__dirname, config.datadirectory + "US/" );
+				
+				//console.log("unzip final = " + final);
+				sut.deleteFolderRecursiveSync(config.datadirectory + "US/");				
 				
 				done();
 		});
 
 	});
-	
-	it("Delete Recursively", function (done) {
-		this.timeout(5000);
-		var final = path.join(__dirname, config.datadirectory + "US/" );
-			
-		sut.deleteFolderRecursiveSync(final);
-		
-		sut.doesFileExist(final,function(err,stat){
-			if (err || (stat==undefined)){
-				assert.fail();
-			} else {
-				assert.equal(stat,true);
-			}
-		
-		});
-
-	});	
-
 });	

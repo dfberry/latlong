@@ -2,19 +2,25 @@
 
 // 3rd party libraries
 var assert = require("chai").assert;
+var fs = require("fs");
 
 // custom libraries
 var sut = require("../lib/initwaterfall.js");
 
-describe("Parse Test", function(){
+describe("Parse", function(){
 
-	it("Returns correctly formatted array of Json objects", function (done) {		
-		this.timeout(9000);
+	it("Convert tab-delimited to json", function (done) {		
+		this.timeout(30000);
 
 		var config = require('../data/test/config/config.parse.test.1.json');
 
+		// act
 		sut.parse(config,"US.zip","",function(error, results){
-			assert(Array.isArray(results),'result is array'),
+			
+			// assert
+			assert(Array.isArray(results),'result is array');
+			assert.equal(43633, results.length);
+			
 			done();
 		});
 		

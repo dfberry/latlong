@@ -8,10 +8,20 @@ var path = require("path");
 // custom libraries
 var mkdirp = require('mkdirp');
 var sut = require("../lib/initwaterfall.js");
-var folder = "data/test/deleteRecursive"
+var folder = "data/test/deleteRecursive";
 
-describe("Decompress Test", function(){
 
+var fromFile = "data/US.zip";
+var toFile = "data/US.copy.test.zip";
+
+/*
+Assumptions:
+Copy Test: data/US.zip is a valid file in that location
+
+*/
+
+describe("File Mgmt ", function(){
+/*
 	it("Delete Recursively", function (done) {
 		this.timeout(5000);
 	
@@ -27,12 +37,14 @@ describe("Decompress Test", function(){
 				// if run manually
 				setTimeout(function() {
 
+					console.log("file mgmt final" + final);
+
 					// act
 					sut.deleteFolderRecursiveSync(final);
 					
 					// assert
 					sut.doesFileExist(final,function(err,stat){
-						console.log("stat = " + stat);
+
 						if (err || (stat==undefined)){
 							assert.fail();
 						} else {
@@ -50,7 +62,28 @@ describe("Decompress Test", function(){
 				}, 3000);
 			}		
 		});			
-			
+	});
+*/	
+	it("Copy File", function (done) {
+		this.timeout(5000);
+		
+		// act
+		sut.copyFile(fromFile,toFile);
+		
+		// assert
+		sut.doesFileExist(toFile,function(err,fileExists){
 
-	});	
+			if (err || (fileExists==undefined)){
+				assert.fail();
+			} else {
+				// test passed - yeah
+				assert.equal(fileExists,true);
+				
+				// delete file
+				sut.deleteFileSync(toFile);
+				
+			}
+			done();
+		});
+	});		
 });	
