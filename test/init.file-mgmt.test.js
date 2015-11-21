@@ -37,8 +37,6 @@ describe("File Mgmt ", function(){
 				// if run manually
 				setTimeout(function() {
 
-					console.log("file mgmt final" + final);
-
 					// act
 					sut.deleteFolderRecursiveSync(final);
 					
