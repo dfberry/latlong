@@ -23,7 +23,7 @@ describe("Latlong Search", function(){
 		var searchTerm	= 'FIELD5';
 		var searchValue = 'WA';
 		
-		latlong.Search.ByTerm(configFile.mongodb, searchTerm, searchValue, function (err, results) {
+		latlong.Search.ByTerm(configFile.datastore.config.mongodb, searchTerm, searchValue, function (err, results) {
 			assert.equal(err,null);
 			assert.equal(results.length,747);
 			done();
@@ -35,7 +35,7 @@ describe("Latlong Search", function(){
 		var searchTerm	= 'FIELD5';
 		var searchValue = 'WA';
 
-		latlong.Search.ByTerm(configFile.mongodb, searchTerm, searchValue)
+		latlong.Search.ByTerm(configFile.datastore.config.mongodb, searchTerm, searchValue)
 		.then(function (results) {
 			assert.equal(results.length,747);
 			done();
@@ -47,7 +47,7 @@ describe("Latlong Search", function(){
 	});
 	it(".Fields via callback", function (done) {
 		this.timeout(20000);
-		latlong.Search.Fields(configFile.mongodb, function (err, results) {
+		latlong.Search.Fields(configFile.datastore.config.mongodb, function (err, results) {
 			assert.equal(err,null);
 			assert.equal(results.length,1);
 			done();
@@ -55,7 +55,7 @@ describe("Latlong Search", function(){
 	});
 	it(".Fields via promise", function (done) {
 		this.timeout(20000);
-		latlong.Search.Fields(configFile.mongodb)
+		latlong.Search.Fields(configFile.datastore.config.mongodb)
 		.then(function (results) {
 			assert.equal(results.length,1);
 			done();
