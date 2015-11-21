@@ -2,6 +2,7 @@
 
 // 3rd party libraries
 var assert = require("chai").assert;
+var expect = require("chai").expect;
 var fs = require("fs");
 
 // custom libraries
@@ -20,7 +21,6 @@ describe("Parse", function(){
 			// assert
 			assert(Array.isArray(results),'result is array');
 			assert.equal(43633, results.length);
-			
 			done();
 		});
 		

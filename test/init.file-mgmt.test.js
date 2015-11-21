@@ -21,7 +21,7 @@ Copy Test: data/US.zip is a valid file in that location
 */
 
 describe("File Mgmt ", function(){
-/*
+
 	it("Delete Recursively", function (done) {
 		this.timeout(5000);
 	
@@ -63,7 +63,7 @@ describe("File Mgmt ", function(){
 			}		
 		});			
 	});
-*/	
+	
 	it("Copy File", function (done) {
 		this.timeout(5000);
 		

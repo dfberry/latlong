@@ -13,9 +13,9 @@ var config = {
 	"unzipfileCHMOD":"444", 
 };
 
-describe("Decompress Tests", function(){
+describe("Decompress", function(){
 
-	it("Decompress unzip test", function (done) {
+	it("Unzip", function (done) {
 		this.timeout(5000);
 		
 		//var archive = path.join(__dirname, zippedFile);
@@ -24,13 +24,7 @@ describe("Decompress Tests", function(){
 		sut.unzip(config, country, null, function (err, status) {
 				expect(status).to.exist;
 				expect(err).to.be.null;
-				console.log(status);
 				
-				// path is wrong 
-				// /Users/dfberry/repos/latlong/test/data/US/
-				//var final = path.join(__dirname, config.datadirectory + "US/" );
-				
-				//console.log("unzip final = " + final);
 				sut.deleteFolderRecursiveSync(config.datadirectory + "US/");				
 				
 				done();
