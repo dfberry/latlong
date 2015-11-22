@@ -22,7 +22,6 @@ var filesDontExist =[
 
 
 var testFailConfigFiles = [
-	'notARealtest.json',
 	'../data/test/config/configLoadNoCountry.fail.json',
 	'../data/test/config/configLoadEmptyCountry.fail.json',	
 	'../data/test/config/configLoadNoDataUrl.fail.json',
@@ -43,6 +42,42 @@ so that test results display nicely
 
 // custom libraries
 var suv = require("../lib/initwaterfall.js");
+
+// DFB:Todo - check for exact errors
+describe("Config file", function(){
+
+	it("Empty config object", function (done) {
+		this.timeout(10000);
+		
+		var configFile = undefined;
+		
+		suv.configFileCheck(configFile, function (error, results) {
+			expect(error).to.exist;
+			done();
+		});
+	});
+	
+	it("number", function (done) {
+		this.timeout(10000);
+		
+		var configFile = 5;
+		
+		suv.configFileCheck(configFile, function (error, results) {
+			expect(error).to.exist;
+			done();
+		});
+	});
+	it("string", function (done) {
+		this.timeout(10000);
+		
+		var configFile = "this is a test";
+		
+		suv.configFileCheck(configFile, function (error, results) {
+			expect(error).to.exist;
+			done();
+		});
+	});	
+});
 
 function _filesExist(configFile){
 	
