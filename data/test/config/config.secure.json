@@ -1,0 +1,7 @@
+{
+	"mongodb": {
+		"url": "mongodb://user:pwd@host:port/collection",
+		"user": "user",
+		"pwd": "pwd"
+	}
+}
