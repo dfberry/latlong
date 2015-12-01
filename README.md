@@ -21,3 +21,7 @@ an example is:
 	
 While the tests use this file, you can add this information into the 
 json config programmatically instead of creating the file.
+
+config.datastore.config.mongodb.url = url;
+config.datastore.config.mongodb.user = user;
+config.datastore.config.mongodb.pwd = pwd;
