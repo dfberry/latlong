@@ -1,12 +1,13 @@
 /* jshint node: true */
-
+'use strict';
 // 3rd party libraries
 var assert = require("chai").assert;
 var expect = require("chai").expect;
 var path = require("path");
 
 // custom libraries
-var sut = require("../lib/initwaterfall.js");
+var myIOUtils = require("../lib/io-utils.js");
+var SUT = require("../lib/unzip.js");
 var country = "US.zip";
 var config = {
 	"datadirectory": "data/",
@@ -20,15 +21,18 @@ describe("Decompress", function(){
 		
 		//var archive = path.join(__dirname, zippedFile);
 		//var final = path.join(__dirname, unzippedDirectory);		
-		
-		sut.unzip(config, country, null, function (err, status) {
+		SUT.unzip(config, country, "previous status is YEAH", function (err, status) {
 				expect(status).to.exist;
 				expect(err).to.be.null;
 				
-				sut.deleteFolderRecursiveSync(config.datadirectory + "US/");				
+				myIOUtils.deleteFolderRecursiveSync(config.datadirectory + "US/");				
 				
 				done();
 		});
-
+	});
+	
+	it("test", function(done){
+		SUT.test();
+		done();
 	});
 });	
