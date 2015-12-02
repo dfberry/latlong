@@ -4,13 +4,14 @@
 var assert = require("chai").assert;
 var expect = require("chai").expect;
 var path = require("path");
+var mkdirp = require('mkdirp');
 
 // custom libraries
-var mkdirp = require('mkdirp');
 var SUT = require("../lib/io-utils.js");
+var myIOUtils = require("../lib/io-utils.js");
+
+
 var folder = "data/test/deleteRecursive";
-
-
 var fromFile = "data/US.zip";
 var toFile = "data/US.copy.test.zip";
 
@@ -83,5 +84,27 @@ describe("File Mgmt ", function(){
 			}
 			done();
 		});
-	});		
+	});	
+	
+	it("Unzip", function (done) {
+		this.timeout(5000);
+		
+		var SUT = require("../lib/unzip.js");
+		var country = "US.zip";
+		var config = {
+			"datadirectory": "data/",
+			"unzipfileCHMOD":"444", 
+		};
+		
+		//var archive = path.join(__dirname, zippedFile);
+		//var final = path.join(__dirname, unzippedDirectory);		
+		SUT.unzip(config, country, "previous status is YEAH", function (err, status) {
+				expect(status).to.exist;
+				expect(err).to.be.null;
+				
+				myIOUtils.deleteFolderRecursiveSync(config.datadirectory + "US/");				
+				
+				done();
+		});
+	});
 });	
