@@ -1,4 +1,5 @@
 /*jslint node: true */
+'use strict';
 
 // 3rd party libraries
 var chai = require("chai");

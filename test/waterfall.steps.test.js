@@ -3,12 +3,13 @@
 
 // 3rd party libraries
 var assert = require("chai").assert;
-//var path = require("path");
+var expect = require("chai").expect;
+var path = require("path");
 
 // custom libraries
-var latlong = require("../latlong.waterfall.js");
+var myIOUtils = require("../lib/io-utils.js");
+var SUT = require("../lib/initwaterfall.js");
 
-// globals
 var config = {
 	"dataurl": "http://download.geonames.org/export/zip/",
 	"country" : ["abc.zip", "US.zip", "CA.zip", "AG.zip", "RU.zip"],
@@ -37,10 +38,9 @@ var config = {
 			"latitude" ,         
 			"longitude" ,        
 			"accuracy"  			
-			]
-		}
+		]
 	}
-
+};
 var secureConfig = require("../data/test/config/config.secure.json");
 
 /* 
@@ -50,34 +50,29 @@ config.datastore.config.mongodb.url = secureConfig.mongodb.url;
 config.datastore.config.mongodb.user = secureConfig.mongodb.user;
 config.datastore.config.mongodb.pwd = secureConfig.mongodb.pwd;
 
-/*
 
-DFB: adding more time as the mongo db seems to be a bit slow
+describe("Waterfall Steps", function(){
 
-*/
-describe("Latlong Search", function(){
-
-	it(".ByTerm", function (done) {
+	it("Download", function (done) {
 		this.timeout(20000);
-		
-		var searchTerm	= 'FIELD5';
-		var searchValue = 'WA';
-		
-		latlong.Search.ByTerm(config.datastore.config.mongodb, searchTerm, searchValue, function (err, results) {
-			assert.equal(err,null);
-			assert.equal(results.length,747);
-			done();
+				
+		var country = "US";
+		var destinationFile = config.datadirectory + country + ".zip";		
+				
+		// adds '.zip' to country inside step1Download
+		SUT.step1Download(config, "US", function (err, status) {
+				expect(status).to.exist;
+				expect(err).to.be.null;
+				
+				myIOUtils.doesFileExist(destinationFile, function(err, boolStatus){
+					expect(boolStatus).to.equal(true);
+					if(boolStatus==true){
+						myIOUtils.deleteFileSync(destinationFile);
+					}
+				});
+				
+				done();
 		});
+		
 	});
-
-	
-	it(".Fields ", function (done) {
-		this.timeout(20000);
-		latlong.Search.Fields(config.datastore.config.mongodb, function (err, results) {
-			assert.equal(err,null);
-			assert.equal(results.length,1);
-			done();
-		});
-	});
-
 });	

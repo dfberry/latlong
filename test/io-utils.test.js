@@ -1,4 +1,5 @@
 /* jshint node: true */
+'use strict';
 
 // 3rd party libraries
 var assert = require("chai").assert;
