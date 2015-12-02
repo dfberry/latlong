@@ -7,6 +7,7 @@ var expect= require("chai").expect;
 
 var _und = require('underscore');
 var customError = require('../lib/error.js');
+var myIOUtils = require('../lib/io-utils.js');
 var path = require("path");
 //var path = require("path");
 
@@ -41,7 +42,7 @@ so that test results display nicely
 */
 
 // custom libraries
-var suv = require("../lib/initwaterfall.js");
+var SUT = require("../lib/config.js");
 
 // DFB:Todo - check for exact errors
 describe("Config file", function(){
@@ -51,7 +52,7 @@ describe("Config file", function(){
 		
 		var configFile = undefined;
 		
-		suv.configFileCheck(configFile, function (error, results) {
+		SUT.FileCheck(configFile, function (error, results) {
 			expect(error).to.exist;
 			done();
 		});
@@ -62,7 +63,7 @@ describe("Config file", function(){
 		
 		var configFile = 5;
 		
-		suv.configFileCheck(configFile, function (error, results) {
+		SUT.FileCheck(configFile, function (error, results) {
 			expect(error).to.exist;
 			done();
 		});
@@ -72,7 +73,7 @@ describe("Config file", function(){
 		
 		var configFile = "this is a test";
 		
-		suv.configFileCheck(configFile, function (error, results) {
+		SUT.FileCheck(configFile, function (error, results) {
 			expect(error).to.exist;
 			done();
 		});
@@ -88,7 +89,7 @@ function _filesExist(configFile){
 
 			assert.doesNotThrow(function() {
 				
-				suv.doesFileExist(configFile, function (error, results) {
+				myIOUtils.doesFileExist(configFile, function (error, results) {
 								
 					if (error==null){
 						assert.equal(results,true);
@@ -114,7 +115,7 @@ function _filesDontExist(configFile){
 				
 			assert.doesNotThrow(function() {
 				
-				suv.doesFileExist(configFile, function (error, results) {
+				myIOUtils.doesFileExist(configFile, function (error, results) {
 					if (error==null){
 						
 						// expect no Error, but a false response
@@ -136,7 +137,7 @@ function _testFailures(configFile){
 		it("File: " + configFile, function (done) {
 			this.timeout(10000);
 			
-			suv.configFileCheck(configFile, function (error, results) {
+			SUT.FileCheck(configFile, function (error, results) {
 				expect(error).to.exist;
 				done();
 			});
@@ -151,7 +152,19 @@ function _testSuccesses(configFile){
 		it("File: " + configFile, function (done) {
 			this.timeout(10000);
 			
-			suv.configFileCheck(configFile, function (error, results) {
+			//need to open file and add security settings
+			var testconfig = require(configFile);
+			var secureConfig = require("../data/test/config/config.secure.json");
+
+			/* 
+			need to add url, user, and pwd to mongodb json object
+			*/
+			testconfig.datastore.config.mongodb.url = secureConfig.mongodb.url;
+			testconfig.datastore.config.mongodb.user = secureConfig.mongodb.user;
+			testconfig.datastore.config.mongodb.pwd = secureConfig.mongodb.pwd;
+			
+			
+			SUT.FileCheck(testconfig, function (error, results) {
 				expect(results).to.exist;
 				expect(error).to.be.null;
 				done();
