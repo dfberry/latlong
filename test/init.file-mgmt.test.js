@@ -7,7 +7,7 @@ var path = require("path");
 
 // custom libraries
 var mkdirp = require('mkdirp');
-var sut = require("../lib/initwaterfall.js");
+var SUT = require("../lib/io-utils.js");
 var folder = "data/test/deleteRecursive";
 
 
@@ -38,10 +38,10 @@ describe("File Mgmt ", function(){
 				setTimeout(function() {
 
 					// act
-					sut.deleteFolderRecursiveSync(final);
+					SUT.deleteFolderRecursiveSync(final);
 					
 					// assert
-					sut.doesFileExist(final,function(err,stat){
+					SUT.doesFileExist(final,function(err,stat){
 
 						if (err || (stat==undefined)){
 							assert.fail();
@@ -66,10 +66,10 @@ describe("File Mgmt ", function(){
 		this.timeout(5000);
 		
 		// act
-		sut.copyFile(fromFile,toFile);
+		SUT.copyFile(fromFile,toFile);
 		
 		// assert
-		sut.doesFileExist(toFile,function(err,fileExists){
+		SUT.doesFileExist(toFile,function(err,fileExists){
 
 			if (err || (fileExists==undefined)){
 				assert.fail();
@@ -78,7 +78,7 @@ describe("File Mgmt ", function(){
 				assert.equal(fileExists,true);
 				
 				// delete file
-				sut.deleteFileSync(toFile);
+				SUT.deleteFileSync(toFile);
 				
 			}
 			done();
