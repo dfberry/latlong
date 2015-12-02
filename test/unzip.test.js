@@ -30,9 +30,4 @@ describe("Decompress", function(){
 				done();
 		});
 	});
-	
-	it("test", function(done){
-		SUT.test();
-		done();
-	});
 });	

@@ -82,7 +82,7 @@ describe("Config file", function(){
 
 function _filesExist(configFile){
 	
-	describe("_fileExist", function(){
+	describe("File Exists", function(){
 	
 		it("File: " + configFile, function (done) {
 			this.timeout(10000);
@@ -108,7 +108,7 @@ function _filesExist(configFile){
 
 function _filesDontExist(configFile){
 
-	describe("_filesDontExist", function(){		
+	describe("File Doesn't Exist", function(){		
 		
 		it("File: " + configFile, function (done) {
 			this.timeout(10000);
@@ -132,7 +132,7 @@ function _filesDontExist(configFile){
 };
 
 function _testFailures(configFile){
-	describe("configFileCheck failure", function(){
+	describe("Verify Config object - should fail", function(){
 	
 		it("File: " + configFile, function (done) {
 			this.timeout(10000);
@@ -147,7 +147,7 @@ function _testFailures(configFile){
 
 function _testSuccesses(configFile){
 
-	describe("configFileCheck success", function(){
+	describe("Verify Config object - should succeed", function(){
 	
 		it("File: " + configFile, function (done) {
 			this.timeout(10000);
