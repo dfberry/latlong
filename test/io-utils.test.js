@@ -27,7 +27,7 @@ describe("File Mgmt ", function(){
 	it("Delete Recursively", function (done) {
 		this.timeout(5000);
 	
-		var final = folder; 
+		var final = path.join(__dirname,folder); 
 			
 		// create directory
 		mkdirp(folder, function(err){
@@ -66,6 +66,12 @@ describe("File Mgmt ", function(){
 	
 	it("Copy File", function (done) {
 		this.timeout(5000);
+
+		var fromFileCopy = "../data/US.zip";
+		var toFileCopy = "../data/test/DeleteWhenDone/US.copy.test.zip";
+
+		var fromFile = path.join(__dirname,fromFileCopy); 
+		var toFile = path.join(__dirname,toFileCopy); 
 		
 		// act
 		SUT.copyFile(fromFile,toFile);
@@ -86,26 +92,6 @@ describe("File Mgmt ", function(){
 			done();
 		});
 	});	
-	
-	it("Unzip", function (done) {
-		this.timeout(5000);
-		
-		var SUT = require("../lib/unzip.js");
-		var country = "US.zip";
-		var config = {
-			"datadirectory": "data/",
-			"unzipfileCHMOD":"444", 
-		};
-		
-		//var archive = path.join(__dirname, zippedFile);
-		//var final = path.join(__dirname, unzippedDirectory);		
-		SUT.unzip(config, country, "previous status is YEAH", function (err, status) {
-				expect(status).to.exist;
-				expect(err).to.be.null;
-				
-				myIOUtils.deleteFolderRecursiveSync(config.datadirectory + "US/");				
-				
-				done();
-		});
-	});
+
+
 });	

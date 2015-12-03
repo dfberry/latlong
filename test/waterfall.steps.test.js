@@ -13,7 +13,7 @@ var SUT = require("../lib/initwaterfall.js");
 var config = {
 	"dataurl": "http://download.geonames.org/export/zip/",
 	"country" : ["abc.zip", "US.zip", "CA.zip", "AG.zip", "RU.zip"],
-	"datadirectory": "data/test/integration/",
+	"datadirectory": "../data/test/integration/",
 	"unzipfileCHMOD":"444", 
 	"datastore" : {
 		"type": "mongodb",
@@ -61,17 +61,24 @@ describe("Waterfall Steps", function(){
 				
 		// adds '.zip' to country inside step1Download
 		SUT.step1Download(config, "US", function (err, status) {
+			
+			if (err){ expect(err).to.be.null; }
+			else {
 				expect(status).to.exist;
 				expect(err).to.be.null;
 				
-				myIOUtils.doesFileExist(destinationFile, function(err, boolStatus){
+				var deleteFilePath = path.join(__dirname,destinationFile);
+				
+				myIOUtils.doesFileExist(deleteFilePath, function(err, boolStatus){
 					expect(boolStatus).to.equal(true);
 					if(boolStatus==true){
-						myIOUtils.deleteFileSync(destinationFile);
+						console.log("file exists = " + deleteFilePath);
+						myIOUtils.deleteFileSync(deleteFilePath);
 					}
 				});
+			}
 				
-				done();
+			done();
 		});
 		
 	});

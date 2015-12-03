@@ -9,26 +9,37 @@ var path = require("path");
 // custom libraries
 var myIOUtils = require("../lib/io-utils.js");
 var SUT = require("../lib/unzip.js");
-var country = "US.zip";
-var config = {
-	"datadirectory": "data/",
-	"unzipfileCHMOD":"444", 
-};
 
 describe("Decompress", function(){
 
 	it("Unzip", function (done) {
 		this.timeout(5000);
 		
-		//var archive = path.join(__dirname, zippedFile);
-		//var final = path.join(__dirname, unzippedDirectory);		
-		SUT.unzip(config, country, "previous status is YEAH", function (err, status) {
-				expect(status).to.exist;
-				expect(err).to.be.null;
+		var pathToFile = path.join(__dirname,"../data/US.zip");
+		var pathToDestination = path.join(__dirname, "../data/test/DeleteWhenDone/Unzip/");
+	
+		SUT.unzip(pathToFile,pathToDestination, function (unzipError, unzipStatus) {
+			
+			myIOUtils.doesFileExist(pathToDestination + "US.txt", function(existsError, existsStatus){
+
+				// unzip
+				expect(unzipStatus).to.exist;
+				expect(unzipStatus).to.equal(true);
+				expect(unzipError).to.be.null;
+
+				// does file exist
+				expect(existsStatus).to.exist;
+				expect(existsStatus).to.equal(true);
+				expect(existsError).to.be.null;
 				
-				myIOUtils.deleteFolderRecursiveSync(config.datadirectory + "US/");				
+				// cleanup
+				myIOUtils.deleteFolderRecursiveSync(pathToDestination);				
 				
-				done();
+				done();				
+			});
+			
+			
+
 		});
 	});
 });	
