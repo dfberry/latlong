@@ -16,7 +16,7 @@ describe("Decompress", function(){
 		this.timeout(5000);
 		
 		var pathToFile = path.join(__dirname,"../data/US.zip");
-		var pathToDestination = path.join(__dirname, "../data/test/DeleteWhenDone/Unzip/");
+		var pathToDestination = path.join(__dirname, "../data/test/DeleteWhenDone/UnzipTest/");
 	
 		SUT.unzip(pathToFile,pathToDestination, function (unzipError, unzipStatus) {
 			
@@ -33,7 +33,7 @@ describe("Decompress", function(){
 				expect(existsError).to.be.null;
 				
 				// cleanup
-				myIOUtils.deleteFolderRecursiveSync(pathToDestination);				
+				myIOUtils.deleteFolderRecursiveSync(path.join(__dirname, "../data/test/DeleteWhenDone/"));				
 				
 				done();				
 			});
