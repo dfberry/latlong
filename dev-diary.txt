@@ -1,3 +1,12 @@
+Dec 7, 2015
+After playing with the decompressjs return of files array, which sometimes doesn't work, and 
+is not easy to debug, I looked at node-unzip-2 which is used by codemix in their 
+geonames-importer library (heavy on the streams). While node-unzip-2 uses a 
+different method of handling the process, there is alot more error tracking. 
+However, at the end of the day, node-unzip-2 doesn't return the files in the zip
+so you have to check the destination directory anyway. Long story short, ignore the
+files array, just check the destination dir and move on.
+
 Nov 9, 2015
 TODO: change callback(err) to callback(Error()))
 
