@@ -7,13 +7,10 @@
 		"type": "mongodb",
 		"config": {
 			"mongodb" : {
-				"url": "mongodb://username:pwd@ds042688.mongolab.com:42688/dfberry-geo",
 				"host" : "x",
 				"port" : "x",
 				"account" : "x",
 				"collection": "geoZip",
-				"user": "username",
-				"pwd": "pwd",
 				"deleteCollectionIfExists": "true"
 			}
 		}	
@@ -33,5 +30,5 @@
 			"longitude" ,        
 			"accuracy"  			
 			]
-		}
 	}
+}

@@ -18,9 +18,7 @@ describe("Steps", function(){
 		
 		var url = "http://download.geonames.org/export/zip/US.zip";
 		var destinationFile = path.join(__dirname,"../data/test/DeleteWhenDone/US.zip");
-		
-		console.log(destinationFile);
-		
+				
 		SUT.download(url, destinationFile, function (err, status) {
 				expect(status).to.exist;
 				expect(err).to.be.null;
@@ -36,4 +34,33 @@ describe("Steps", function(){
 		});
 		
 	});
+	
+	it("Unzip", function (done) {
+		this.timeout(5000);
+		
+		var pathToFile = path.join(__dirname,"../data/US.zip");
+		var pathToDestination = path.join(__dirname, "../data/test/DeleteWhenDone/Unzip/");
+		
+		SUT.unzip(pathToFile, pathToDestination, function (unzipError, unzipStatus) {
+
+			myIOUtils.doesFileExist(pathToDestination + "US.txt", function(existsError, existsStatus){
+
+				// unzip
+				expect(unzipStatus).to.exist;
+				expect(unzipStatus).to.equal(true);
+				expect(unzipError).to.be.null;
+
+				// does file exist
+				expect(existsStatus).to.exist;
+				expect(existsStatus).to.equal(true);
+				expect(existsError).to.be.null;
+				
+				// cleanup
+				myIOUtils.deleteFolderRecursiveSync(pathToDestination);				
+				
+				done();				
+			});
+		});
+		
+	});	
 });	

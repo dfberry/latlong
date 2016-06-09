@@ -1,0 +1,19 @@
+{
+      "version": "0.2.0",
+      "configurations": [
+            {
+                  "name": "mocha",
+                  "type": "node",
+                  "program": "node_modules/mocha/bin/_mocha",
+                  "stopOnEntry": false,
+                  "args": [
+                        "test/unzip.test.js"
+                  ], //you can specify paths to specific tests here
+                  "cwd": ".",
+                  "runtimeExecutable": null,
+                  "env": {
+                        "NODE_ENV": "testing"
+                  }
+            }
+      ]
+}

@@ -7,7 +7,6 @@ var customError = require("./error");
 var fs = require("fs");
 var mkdirp = require('mkdirp');
 var chmodr = require('chmodr');
-var path = require('path');
 var async = require('async');
 var Decompress = require('decompress');
 	
@@ -41,32 +40,68 @@ function unzip(file, destination, cb){
 	console.log("destination=" + destination);
 
 	// make sure zip file exists
-	myIOUtils.doesFileExist(file, function(err,exists){
+	//myIOUtils.doesFileExist(file, function(err,exists){
 		
-		if(err) { cb (err);}
-		else if (exists==false){cb (null,false);}
-		else  {
+		//if(err) { cb (err);}
+		//else if (exists==false){cb (null,false);}
+		//else  {
 
 			var decompress = new Decompress()
 				.src(file)
 				.dest(destination)
-				.use(Decompress.zip({strip: 1, chmod:777}));
+				.use(Decompress.zip({strip: 1}));
 			
-
 			decompress.run(function(err,files){
+					//console.log(err);
+					//console.log(files.length);
 					
 					if (err){
 						cb(err);
 					} else {
-						chmodr(destination, '777');
-						cb(null,true);
+					
+						async.forEach(files, function(file, cb){
+							console.log(file.path);
+							
+						}, function(err){
+							console.log("error in forEach:" + err);
+							cb(err);
+						});
+						
+						cb(null,"true");
 					}
 			});
 			
 			
-		}
-	});
+		//}
+	//});
 }
+
+
+			// TODO: Decompress isn't creating files with this permission set so 
+			// using CHMODR to do that - once that is fixed, remove CHMODR library
+			// and usage
+/*			
+			new DecompressLibrary()
+				.src(file)
+				.dest(destination)
+				.use(DecompressLibrary.zip({strip: 1,mode: 444}))
+				.run(function(err,files){
+					if (err ) {
+						callback(err);
+					}
+					else if (files===undefined) {
+						callback("error: files === undefined");
+					} else if (files ==null) {
+						callback("error: files ==null");
+					} else {
+						chmodr(destination, '444');
+						callback(null,true);
+					}  
+			});
+		}	
+	});
+}; 
+*/
 /*
 function unzip(config, country, previousStatus, callback){
 
